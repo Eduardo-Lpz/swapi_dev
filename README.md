@@ -1,10 +1,11 @@
 # SwapiDev
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/swapi_dev`. To experiment with that code, run `bin/console` for an interactive prompt.
+A Ruby wrapper for the Star Wars API
 
-TODO: Delete this and the text above, and describe your gem
 
-## Installation
+# Api documentation
+here is the documentation of [The Star War API](https://swapi.dev/)
+# Installation
 
 Add this line to your application's Gemfile:
 
@@ -20,19 +21,70 @@ Or install it yourself as:
 
     $ gem install swapi_dev
 
-## Usage
+# Usage
 
-TODO: Write usage instructions here
+First you need to require the gem
 
-## Development
+```ruby
+require "swapi_dev"
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Methods
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+There is 6 diferents statistics to request
+### People
+
+```ruby
+SwapiDev.people_all
+SwapiDev.people_id(id)
+SwapiDev.people_name(name)
+```
+
+### Films
+
+```ruby
+SwapiDev.film_all
+SwapiDev.film_id(id)
+SwapiDev.film_title(title)
+```
+
+### Planets
+
+```ruby
+SwapiDev.planet_all
+SwapiDev.planet_id(id)
+SwapiDev.planet_name(name)
+```
+
+### Species
+
+```ruby
+SwapiDev.specie_all
+SwapiDev.specie_id(id)
+SwapiDev.specie_name(name)
+```
+
+### Starships
+
+```ruby
+SwapiDev.starship_all
+SwapiDev.starship_id(id)
+SwapiDev.starship_name(name)
+SwapiDev.starship_model(model)
+```
+
+### Vehicles
+
+```ruby
+SwapiDev.vehicle_all
+SwapiDev.vehicle_id(id)
+SwapiDev.vehicle_name(name)
+SwapiDev.vehicle_model(model)
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/swapi_dev. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/swapi_dev/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/Eduardo-Lpz/swapi_dev. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/swapi_dev/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 

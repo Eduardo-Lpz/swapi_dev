@@ -83,6 +83,10 @@ module SwapiDev
     Starship.new.search(name)
   end
 
+  def self.starship_model(model)
+    Starship.new.search(model)
+  end
+
   def self.vehicle_all
     Vehicle.new.all
   end
