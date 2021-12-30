@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "net/http"
+
 module SwapiDev
   class Client
     def initialize(base_url)
