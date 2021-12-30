@@ -8,7 +8,6 @@ module SwapiDev
 
     def all
       response = client.get(resource)
-
       return response if response[:next].nil?
 
       range = (2..(response[:count] / 10.0).ceil)
@@ -23,12 +22,31 @@ module SwapiDev
       client.get("#{resource}/#{id}")
     end
 
+    def search(field)
+      client.get(resource, search: field.to_s)
+    end
+
+    def update(**data)
+      client.put(resource, **data)
+    end
+
+    def create(**data)
+      client.post(resource, **data)
+    end
+
+    def delete(**data)
+      client.delete(resource, **data)
+    end
+
     private
 
     attr_reader :client
 
     def resource
       @resource ||= self.class.name.split("::").last.downcase
+      @resource << "s" unless @resource == "people"
+
+      @resource
     end
   end
 end
