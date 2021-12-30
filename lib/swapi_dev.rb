@@ -27,7 +27,7 @@ module SwapiDev
     People.new.all
   end
 
-  def self.people(id)
+  def self.people_id(id)
     People.new.find(id)
   end
 
@@ -39,7 +39,7 @@ module SwapiDev
     Film.new.all
   end
 
-  def self.film(id)
+  def self.film_id(id)
     Film.new.find(id)
   end
 
@@ -51,7 +51,7 @@ module SwapiDev
     Planet.new.all
   end
 
-  def self.planet(id)
+  def self.planet_id(id)
     Planet.new.find(id)
   end
 
@@ -63,7 +63,7 @@ module SwapiDev
     Specie.new.all
   end
 
-  def self.specie(id)
+  def self.specie_id(id)
     Specie.new.find(id)
   end
 
@@ -75,7 +75,7 @@ module SwapiDev
     Starship.new.all
   end
 
-  def self.starship(id)
+  def self.starship_id(id)
     Starship.new.find(id)
   end
 
@@ -87,7 +87,7 @@ module SwapiDev
     Vehicle.new.all
   end
 
-  def self.vehicle(id)
+  def self.vehicle_id(id)
     Vehicle.new.find(id)
   end
 
