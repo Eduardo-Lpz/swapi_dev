@@ -2,6 +2,10 @@
 
 A Ruby wrapper for the Star Wars API
 
+# RubyGem
+
+[https://rubygems.org/gems/swapi_dev](https://rubygems.org/gems/swapi_dev)
+
 
 # Api documentation
 here is the documentation of [The Star War API](https://swapi.dev/)
