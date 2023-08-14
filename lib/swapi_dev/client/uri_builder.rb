@@ -8,7 +8,7 @@ module SwapiDev
 
     def build(resource, **options)
       uri = URI.join(@base_url, resource)
-      uri.query = URI.encode_www_form(options.slice(:format, :search, :page))
+      uri.query = URI.encode_www_form(options.slice(:search, :page, :format))
       yield if block_given?
       uri
     end
