@@ -12,7 +12,11 @@ module SwapiDev
         }
       )
     rescue
-      nil
+      {
+        message: content.message,
+        code: content.code,
+        detail: "Try without format or page"
+      }
     end
   end
 end

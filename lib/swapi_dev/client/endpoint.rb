@@ -7,7 +7,7 @@ module SwapiDev
     end
 
     def all(**args)
-      client.get(resource, **args)
+      client.get("#{resource}/", **args)
     end
 
     def find_id(id, **args)
