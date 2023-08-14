@@ -4,7 +4,7 @@
 
 - Initial release
 
-## [1.0.0] - 2023-08-29
+## [1.0.0] - 2023-08-14
 
 - Update minimun ruby version (3.0.0)
 - Update development dependencies
