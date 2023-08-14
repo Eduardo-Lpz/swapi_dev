@@ -12,3 +12,6 @@
 - apply some KISS coding 😘
 - update readme
 - remove not necessary methods
+## [1.0.1] - 2023-08-14
+
+- update release date 😅
