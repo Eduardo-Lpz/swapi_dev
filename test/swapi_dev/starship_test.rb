@@ -5,45 +5,79 @@ require "net/http"
 
 module SwapiDev
   class StarshipTest < Minitest::Test
-    def starship
+    def params
+      {
+        format: :wookiee,
+        page: 1,
+        search: "corvette"
+      }
+    end
+
+    def format_error
+      { detail: "Not found", message: "NOT FOUND", code: "404" }
+    end
+
+    def resource
       Starship.new
     end
 
-    def test_starship_all_must_return_a_hash
-      body = {
-        count: 36,
-        next: "https://swapi.dev/api/starships/?page=2",
+    def starships
+      {
+        count: 1,
+        next: nil,
         previous: nil,
-        results: [
-          {
-            name: "Rebel transport",
-            model: "GR-75 medium transport",
-            manufacturer: "Gallofree Yards, Inc.",
-            cost_in_credits: "unknown",
-            length: "90",
-            max_atmosphering_speed: "650",
-            crew: "6",
-            passengers: "90",
-            cargo_capacity: "19000000",
-            consumables: "6 months",
-            hyperdrive_rating: "4.0",
-            MGLT: "20",
-            starship_class: "Medium transport",
-            pilots: [],
-            films: ["https://swapi.dev/api/films/2/", "https://swapi.dev/api/films/3/"],
-            created: "2014-12-15T12:34:52.264000Z",
-            edited: "2014-12-20T21:23:49.895000Z",
-            url: "https://swapi.dev/api/starships/17/"
-          }
-        ]
+        results: [starship]
       }
+    end
 
+    def starship
+      {
+        name: "CR90 corvette",
+        model: "CR90 corvette",
+        manufacturer: "Corellian Engineering Corporation",
+        cost_in_credits: "3500000",
+        length: "150",
+        max_atmosphering_speed: "950",
+        crew: "30-165",
+        passengers: "600",
+        cargo_capacity: "3000000",
+        consumables: "1 year",
+        hyperdrive_rating: "2.0",
+        MGLT: "60",
+        starship_class: "corvette",
+        pilots: [],
+        films: [
+          "https://swapi.dev/api/films/1/",
+          "https://swapi.dev/api/films/3/",
+          "https://swapi.dev/api/films/6/"
+        ],
+        created: "2014-12-10T14:20:33.369000Z",
+        edited: "2014-12-20T21:23:49.867000Z",
+        url: "https://swapi.dev/api/starships/2/"
+      }
+    end
+
+    def test_starship_class_must_exist
+      refute_nil resource
+    end
+
+    def test_must_get_starship
       stub_request(:get, /http.*swapi.*/).to_return(
-        body: JSON.generate(body),
+        body: JSON.generate(starship),
         status: [200, "OK"]
       )
 
-      assert_instance_of Array, starship.all
+      response = SwapiDev.starships(search: "corvette")
+      assert_instance_of Hash, response
+    end
+
+    def test_must_fail_when_format_is_invalid
+      stub_request(:get, /http.*swapi.*/).to_return(
+        body: JSON.generate(format_error)
+      )
+
+      response = SwapiDev.starship_id(1, format: :not_wookiee)
+      assert_equal "404", response[:code]
     end
   end
 end
