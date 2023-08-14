@@ -11,7 +11,6 @@ require_relative "swapi_dev/client/async_stream"
 require_relative "swapi_dev/serializers/base_serializer"
 require_relative "swapi_dev/serializers/error_serializer"
 require_relative "swapi_dev/serializers/json_serializer"
-require_relative "swapi_dev/serializers/wookiee_serializer"
 
 require_relative "swapi_dev/resources/people"
 require_relative "swapi_dev/resources/starship"
@@ -23,83 +22,51 @@ require_relative "swapi_dev/resources/specie"
 module SwapiDev
   class Error < StandardError; end
 
-  def self.people_all
-    People.new.all
+  def self.people(**args)
+    People.new.all(**args)
   end
 
-  def self.people_id(id)
-    People.new.find(id)
+  def self.people_id(id, **args)
+    People.new.find_id(id, **args.slice(:format))
   end
 
-  def self.people_name(name)
-    People.new.search(name)
+  def self.films(**args)
+    Film.new.all(**args)
   end
 
-  def self.film_all
-    Film.new.all
+  def self.film_id(id, **args)
+    Film.new.find_id(id, **args.slice(:format))
   end
 
-  def self.film_id(id)
-    Film.new.find(id)
+  def self.planets(**args)
+    Planet.new.all(**args)
   end
 
-  def self.film_title(name)
-    Film.new.search(name)
+  def self.planet_id(id, **args)
+    Planet.new.find_id(id, **args.slice(:format))
   end
 
-  def self.planet_all
-    Planet.new.all
+  def self.species(**args)
+    Specie.new.all(**args)
   end
 
-  def self.planet_id(id)
-    Planet.new.find(id)
+  def self.specie_id(id, **args)
+    Specie.new.find_id(id, **args.slice(:format))
   end
 
-  def self.planet_name(name)
-    Planet.new.search(name)
+  def self.starships(**args)
+    Starship.new.all(**args)
   end
 
-  def self.specie_all
-    Specie.new.all
+  def self.starship_id(id, **args)
+    Starship.new.find_id(id, **args.slice(:format))
   end
 
-  def self.specie_id(id)
-    Specie.new.find(id)
+  def self.vehicles(**args)
+    Vehicle.new.all(**args)
   end
 
-  def self.specie_name(name)
-    Specie.new.search(name)
-  end
-
-  def self.starship_all
-    Starship.new.all
-  end
-
-  def self.starship_id(id)
-    Starship.new.find(id)
-  end
-
-  def self.starship_name(name)
-    Starship.new.search(name)
-  end
-
-  def self.starship_model(model)
-    Starship.new.search(model)
-  end
-
-  def self.vehicle_all
-    Vehicle.new.all
-  end
-
-  def self.vehicle_id(id)
-    Vehicle.new.find(id)
-  end
-
-  def self.vehicle_name(name)
-    Vehicle.new.search(name)
-  end
-
-  def self.vehicle_model(model)
-    Vehicle.new.search(model)
+  def self.vehicle_id(id, **args)
+    Vehicle.new.find_id(id, **args.slice(:format))
   end
 end

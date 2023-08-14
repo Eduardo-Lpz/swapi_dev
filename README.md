@@ -35,56 +35,78 @@ require "swapi_dev"
 
 ## Methods
 
-There is 6 diferents statistics to request
-### People
+You will find methods for 6 diferent Resources, all of them with the same behavior:
+- Planets
+- Starships
+- Vehicles
+- People
+- Films
+- Species
+#### Example using People
 
 ```ruby
-SwapiDev.people_all
-SwapiDev.people_id(id)
-SwapiDev.people_name(name)
+SwapiDev.people # accepts: format, page, search
+SwapiDev.people_id(some_id) # accepts: format
 ```
 
-### Films
+## Searching
+All searches will use case-insensitive partial matches on the set of search fields.
 
 ```ruby
-SwapiDev.film_all
-SwapiDev.film_id(id)
-SwapiDev.film_title(title)
+# people search
+SwapiDev.people(search: "Luke Skywalker")
+# vehicle search
+SwapiDev.vehicle(search: "Sand Crawler")
 ```
 
-### Planets
+To see the set of search fields for each resource, check the table below:
+
+<table>
+  <tr>
+    <td><b>Resource</b></td>
+    <td><b>Fields</b></td>
+  </tr>
+  <tr>
+    <td>People</td>
+    <td>name</td>
+  </tr>
+  <tr>
+    <td>Films</td>
+    <td>title</td>
+  </tr>
+  <tr>
+    <td>Starships</td>
+    <td>name, model</td>
+  </tr>
+  <tr>
+    <td>Vehicles</td>
+    <td>name, model</td>
+  </tr>
+  <tr>
+    <td>Species</td>
+    <td>name</td>
+  </tr>
+  <tr>
+    <td>Planets</td>
+    <td>name</td>
+  </tr>
+</table>
+
+## Pagination
+You can pass a `page` argument if you want to get specific page.
 
 ```ruby
-SwapiDev.planet_all
-SwapiDev.planet_id(id)
-SwapiDev.planet_name(name)
+SwapiDev.people(page: 2)
 ```
 
-### Species
-
+## Format
+This encoding is identical to JSON except with wookiee translations. All methods accept wookiee format keyword.
 ```ruby
-SwapiDev.specie_all
-SwapiDev.specie_id(id)
-SwapiDev.specie_name(name)
+SwapiDev.people(format: :wookie)
+SwapiDev.people(search: "Luke", format: :wookie)
+SwapiDev.people_id(1, format: :wookie)
 ```
 
-### Starships
-
-```ruby
-SwapiDev.starship_all
-SwapiDev.starship_id(id)
-SwapiDev.starship_name(name)
-SwapiDev.starship_model(model)
-```
-
-### Vehicles
-
-```ruby
-SwapiDev.vehicle_all
-SwapiDev.vehicle_id(id)
-SwapiDev.vehicle_name(name)
-SwapiDev.vehicle_model(model)
-```
 
 ## Contributing
 

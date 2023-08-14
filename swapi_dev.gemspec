@@ -12,7 +12,13 @@ Gem::Specification.new do |spec|
   spec.description = "Ruby wrapper for The Star Wars API"
   spec.homepage = "https://github.com/Eduardo-Lpz/swapi_dev"
   spec.license = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
+  spec.required_ruby_version = "~> 3.0.0"
+
+  spec.add_development_dependency "minitest", "~> 5.19"
+  spec.add_development_dependency "rake", "~> 13.0", ">= 13.0.6"
+  spec.add_development_dependency "rubocop", "~> 1.55", ">= 1.55.1"
+  spec.add_development_dependency "simplecov", "~> 0.22.0"
+  spec.add_development_dependency "webmock", "~> 3.18", ">= 3.18.1"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
